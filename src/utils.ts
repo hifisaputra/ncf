@@ -33,6 +33,12 @@ export async function copyDirectory(
 			return true;
 		},
 	});
+
+	// Rename _gitignore to .gitignore (npm strips .gitignore on publish)
+	const gitignorePath = path.join(dest, "_gitignore");
+	if (await fs.pathExists(gitignorePath)) {
+		await fs.rename(gitignorePath, path.join(dest, ".gitignore"));
+	}
 }
 
 export function hasFeature(features: Feature[], feature: Feature): boolean {
