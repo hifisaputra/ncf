@@ -34,7 +34,7 @@ export function buildPackageJson(
 		dependencies: {
 			"@opennextjs/cloudflare": "^1.3.0",
 			"@t3-oss/env-nextjs": "^0.13.8",
-			next: "15.4.6",
+			next: "15.4.11",
 			react: "19.1.0",
 			"react-dom": "19.1.0",
 			zod: "^4.1.9",
