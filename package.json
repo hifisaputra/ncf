@@ -1,6 +1,6 @@
 {
 	"name": "create-ncf",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Scaffold a Next.js 15 + Cloudflare Workers project with optional tRPC, Drizzle, auth, and more",
 	"type": "module",
 	"exports": "./dist/index.js",

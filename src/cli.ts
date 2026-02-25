@@ -44,6 +44,18 @@ export async function cli() {
 		spinner.stop("Failed to install dependencies. You can install them manually.");
 	}
 
+	// Generate Cloudflare types
+	spinner.start("Generating Cloudflare types...");
+	try {
+		execSync("npx wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts", {
+			cwd: targetDir,
+			stdio: "ignore",
+		});
+		spinner.stop("Cloudflare types generated.");
+	} catch {
+		spinner.stop("Failed to generate Cloudflare types. Run `cf-typegen` manually.");
+	}
+
 	// Git init
 	spinner.start("Initializing git repository...");
 	try {

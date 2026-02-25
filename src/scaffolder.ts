@@ -1,6 +1,5 @@
 import fs from "fs-extra";
 import path from "node:path";
-import { buildCloudflareEnvDts, buildLibEnvDts } from "./builders/cloudflare-env.js";
 import { buildEnvExample, buildEnvJs } from "./builders/env.js";
 import { buildNextConfig } from "./builders/next-config.js";
 import { buildPackageJson } from "./builders/package-json.js";
@@ -125,16 +124,6 @@ export async function scaffold(
 	await fs.writeFile(
 		path.join(targetDir, "worker.ts"),
 		buildWorkerTs(features),
-	);
-
-	await fs.writeFile(
-		path.join(targetDir, "cloudflare-env.d.ts"),
-		buildCloudflareEnvDts(features),
-	);
-
-	await fs.writeFile(
-		path.join(targetDir, "lib.env.d.ts"),
-		buildLibEnvDts(features),
 	);
 
 	await fs.writeFile(
