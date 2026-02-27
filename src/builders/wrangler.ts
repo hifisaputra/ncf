@@ -5,13 +5,17 @@ export function buildWrangler(
 	projectName: string,
 	features: Feature[],
 ): string {
+	const compatFlags = hasFeature(features, "auth")
+		? '["nodejs_compat", "global_fetch_strictly_public"]'
+		: '["nodejs_compat"]';
+
 	const lines: string[] = [
 		"{",
 		'\t"$schema": "node_modules/wrangler/config-schema.json",',
 		`\t"name": "${projectName}",`,
 		'\t"main": "worker.ts",',
 		'\t"compatibility_date": "2025-03-01",',
-		'\t"compatibility_flags": ["nodejs_compat"],',
+		`\t"compatibility_flags": ${compatFlags},`,
 		'\t"assets": {',
 		'\t\t"binding": "ASSETS",',
 		'\t\t"directory": ".open-next/assets"',
